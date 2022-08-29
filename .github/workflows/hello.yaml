@@ -1,0 +1,17 @@
+name: Action demo
+on:
+  - push
+jobs:
+  Exp:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "the job was automatically triggered by a ${{ github.event_name }}"
+      - run: echo "this job is currently runs on ${{ runner.os }}"
+      - run: echo "the branch is ${{ github.ref }} and repository is ${{ github.repository }}"
+      - name: check out repository code
+        uses: actions/checkout@v3
+      - run: echo "the repo has been cloned"
+      - name: list files
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "the status of this job is ${{ job.status }}"
